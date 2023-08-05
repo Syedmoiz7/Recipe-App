@@ -41,6 +41,10 @@ header h1 {
   min-width: 120px;
 }
 
+#searchBtn:hover {
+  cursor: pointer;
+}
+
 main {
   display: flex;
   justify-content: center;
@@ -81,6 +85,10 @@ li {
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0px 0px 20px #ccc;
+}
+
+#recipe-list li:hover {
+  cursor: pointer;
 }
 
 #recipe-list li .title {

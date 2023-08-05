@@ -10,7 +10,7 @@
     function search() {
         const query = inputElem.value.toLowerCase();
         const results = recipes.filter((recipe) => {
-            return (recipe.title.toLowerCase.includes(query) ||
+            return (recipe.title.toLowerCase().includes(query) ||
                 recipe.ingredients.join(" ").toLowerCase().includes(query))
         })
         displaySearchResults(results)
@@ -22,20 +22,26 @@
             const li = document.createElement("li")
             const listItem = `
                 <h2 class="title">${recipe.title}</h2>
-                <div class="description"${recipe.description}</div>
+                <div class="description">${recipe.description}</div>
             `
             li.innerHTML = listItem
             li.addEventListener("click", () => {
                 loadRecipeDetails(recipe)
             })
-
+            listElem.appendChild(li);
         });
     }
 
     function loadRecipeDetails(recipe) {
-
+        detailsElem.innerHTML = `
+        <h2 class="title">${recipe.title}</h2>
+                <ul>${recipe.ingredients.map(ingredient => {
+            return `<li>${ingredient}</li>`
+        }).join("")}</ul>
+        <h3>Instructions </h3>
+        <div>${recipe.instructions}</div>
+        `
     }
-
 
     btnElem.addEventListener("click", search)
 
